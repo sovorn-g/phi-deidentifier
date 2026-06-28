@@ -57,7 +57,8 @@ def _to_phispan(result: RecognizerResult, text: str) -> PHISpan:
 
 _NOISY_ORG_TOKENS = {
     "nhi", "ihi", "medicare", "mrn", "ur", "u/r", "dob", "phone", "email", "fax",
-    "address", "postcode", "patient", "clinic", "hospital",
+    "address", "postcode", "patient", "clinic", "hospital", "social security number",
+    "driver's license", "passport number", "medical record number", "nhis",
 }
 
 

@@ -8,6 +8,7 @@ from __future__ import annotations
 import pytest
 
 from phi.detect.rules import (
+    GenericIdRecognizer,
     IhiRecognizer,
     MedicareRecognizer,
     NhiOldRecognizer,
@@ -73,6 +74,33 @@ def test_ihi_recognizer() -> None:
     assert len(results) == 1
 
 
+def test_generic_id_recognizer_context_gated() -> None:
+    rec = GenericIdRecognizer()
+    text = (
+        "Social Security Number: 999-48-4828\n"
+        "Passport Number: X10516134X\n"
+        "Medical Record Number: 08ce8462-f56a-4fd6-b986-ea75c5c6edb2\n"
+        "MRN: 08ce8462-f56a-4fd6-b986-ea75c5c6edb2\n"
+        "Unlabelled token 08ce8462-f56a-4fd6-b986-ea75c5c6edb2 should stay alone."
+    )
+    results = rec.analyze(text=text, entities=[EntityType.ID.value])
+    detected = {text[r.start : r.end] for r in results}
+    assert "999-48-4828" in detected
+    assert "X10516134X" in detected
+    assert "08ce8462-f56a-4fd6-b986-ea75c5c6edb2" in detected
+    assert len(results) == 4
+
+
+def test_iso_date_recognizer() -> None:
+    from phi.detect.rules import DateRecognizerCustom
+
+    text = "Birth date: 1992-04-30, invalid date: 1992-99-99"
+    rec = DateRecognizerCustom()
+    results = rec.analyze(text=text, entities=[EntityType.DATE.value])
+    detected = [text[r.start : r.end] for r in results]
+    assert detected == ["1992-04-30"]
+
+
 @pytest.mark.parametrize(
     "text,expected",
     [
@@ -86,6 +114,14 @@ def test_phone_recognizer(text: str, expected: str) -> None:
     results = rec.analyze(text=text, entities=[EntityType.PHONE.value])
     assert len(results) == 1
     assert text[results[0].start : results[0].end] == expected
+
+
+def test_labelled_synthetic_phone_recognizer() -> None:
+    rec = PhoneRecognizerPhi(regions=["US", "NZ", "AU"])
+    text = "Phone: 555-711-5374"
+    results = rec.analyze(text=text, entities=[EntityType.PHONE.value])
+    assert len(results) == 1
+    assert text[results[0].start : results[0].end] == "555-711-5374"
 
 
 # ---------------------------------------------------------------------------

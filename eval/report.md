@@ -14,13 +14,13 @@ Corpus: 30 synthetic notes with gold spans. Matching: IoU ≥ 0.5 (relaxed), exa
 | MRN | 12 | 12 | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 |
 | NHI | 11 | 11 | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 |
 | PERSON | 31 | 29 | 1.000 | 0.935 | 0.967 | 0.966 | 0.903 | 0.933 |
-| PHONE | 29 | 28 | 1.000 | 0.966 | 0.982 | 1.000 | 0.966 | 0.982 |
+| PHONE | 29 | 29 | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 |
 | POSTCODE | 13 | 13 | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 |
 
 ## Aggregates
 
-- **Micro overall** — P/R/F1: 0.985 / 0.985 / 0.985 (relaxed); 0.965 / 0.965 / 0.965 (strict)
-- **Identifiers** — P/R/F1: 1.000 / 0.993 / 0.996 (relaxed); 1.000 / 0.993 / 0.996 (strict)
+- **Micro overall** — P/R/F1: 0.985 / 0.990 / 0.987 (relaxed); 0.965 / 0.970 / 0.967 (strict)
+- **Identifiers** — P/R/F1: 1.000 / 1.000 / 1.000 (relaxed); 1.000 / 1.000 / 1.000 (strict)
 
 _These metrics are illustrative on a small synthetic corpus authored alongside the recognizers; they do not constitute a validation claim._
 

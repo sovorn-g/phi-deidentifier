@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import logging
 import re
+from datetime import date
 
 import phonenumbers
 from dateparser import parse as dateparser_parse
@@ -189,6 +190,11 @@ class IhiRecognizer(PatternRecognizer):
 class PhoneRecognizerPhi(EntityRecognizer):
     """Phone numbers via the ``phonenumbers`` library for configured regions."""
 
+    LABELLED_PHONE_RE = re.compile(
+        r"\b(?:Phone|Telephone|Contact|Mobile)[:\s]+([+()0-9][0-9 .()/-]{6,})\b",
+        re.IGNORECASE,
+    )
+
     def __init__(self, regions: list[str] | None = None) -> None:
         self.regions = regions or ["NZ", "AU"]
         super().__init__(supported_entities=[EntityType.PHONE.value], supported_language="en", name="PhoneRecognizerPhi")
@@ -198,6 +204,17 @@ class PhoneRecognizerPhi(EntityRecognizer):
     ) -> list[RecognizerResult]:
         results: list[RecognizerResult] = []
         seen: set[tuple[int, int]] = set()
+        for m in self.LABELLED_PHONE_RE.finditer(text):
+            key = (m.start(1), m.end(1))
+            seen.add(key)
+            results.append(
+                RecognizerResult(
+                    entity_type=EntityType.PHONE.value,
+                    start=m.start(1),
+                    end=m.end(1),
+                    score=0.75,
+                )
+            )
         for region in self.regions:
             for match in phonenumbers.PhoneNumberMatcher(text, region=region):
                 key = (match.start, match.end)
@@ -243,10 +260,21 @@ class DateRecognizerCustom(EntityRecognizer):
             if key in seen:
                 continue
             seen.add(key)
-            parsed = dateparser_parse(
-                m.group(),
-                settings={"DATE_ORDER": "DMY", "STRICT_PARSING": False, "REQUIRE_PARTS": ["day", "month", "year"]},
-            )
+            if re.fullmatch(r"\d{4}-\d{2}-\d{2}", m.group()):
+                try:
+                    date.fromisoformat(m.group())
+                    parsed = True
+                except ValueError:
+                    parsed = False
+            else:
+                parsed = dateparser_parse(
+                    m.group(),
+                    settings={
+                        "DATE_ORDER": "DMY",
+                        "STRICT_PARSING": False,
+                        "REQUIRE_PARTS": ["day", "month", "year"],
+                    },
+                )
             if parsed:
                 results.append(
                     RecognizerResult(
@@ -279,6 +307,55 @@ class MrnRecognizer(EntityRecognizer):
             )
             for m in self.REGEX.finditer(text)
         ]
+
+
+class GenericIdRecognizer(EntityRecognizer):
+    """Context-gated generic IDs such as SSN, passport, license, and UUID values."""
+
+    LABELLED_ID_RE = re.compile(
+        r"\b(?:SSN|Social Security Number|Driver'?s License|Passport(?: Number)?|"
+        r"Medical Record Number|FHIR patient id|FHIR resource id|Identifier)"
+        r"[:\s#]+([A-Z0-9][A-Z0-9-]{5,})\b",
+        re.IGNORECASE,
+    )
+    SSN_RE = re.compile(r"\b\d{3}-\d{2}-\d{4}\b")
+    UUID_RE = re.compile(
+        r"\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b",
+        re.IGNORECASE,
+    )
+
+    def __init__(self) -> None:
+        super().__init__(supported_entities=[EntityType.ID.value], supported_language="en", name="GenericIdRecognizer")
+
+    def analyze(
+        self, text: str, entities: list[str], nlp_artifacts: NlpArtifacts | None = None
+    ) -> list[RecognizerResult]:
+        results: list[RecognizerResult] = []
+        seen: set[tuple[int, int]] = set()
+
+        def add(start: int, end: int, score: float) -> None:
+            key = (start, end)
+            if key in seen:
+                return
+            seen.add(key)
+            results.append(
+                RecognizerResult(
+                    entity_type=EntityType.ID.value,
+                    start=start,
+                    end=end,
+                    score=score,
+                )
+            )
+
+        for m in self.LABELLED_ID_RE.finditer(text):
+            add(m.start(1), m.end(1), 0.8)
+        for m in self.SSN_RE.finditer(text):
+            add(m.start(), m.end(), 0.85)
+        for m in self.UUID_RE.finditer(text):
+            window = text[max(0, m.start() - 40) : m.end() + 20].lower()
+            if any(label in window for label in ("mrn", "identifier", "patient id", "resource id")):
+                add(m.start(), m.end(), 0.75)
+        return results
 
 
 class AgeRecognizer(PatternRecognizer):
@@ -353,7 +430,7 @@ class LocationRecognizer(EntityRecognizer):
 
 
 class PostcodeRecognizer(EntityRecognizer):
-    """4-digit postcodes gated by address context on the same line."""
+    """Postal codes gated by address context on the same line."""
 
     ADDRESS_WORDS = {
         "address", "street", "road", "ave", "avenue", "drive", "suburb", "city",
@@ -363,7 +440,7 @@ class PostcodeRecognizer(EntityRecognizer):
 
     def __init__(self) -> None:
         super().__init__(supported_entities=[EntityType.POSTCODE.value], supported_language="en", name="PostcodeRecognizer")
-        self._regex = re.compile(r"\b\d{4}\b")
+        self._regex = re.compile(r"\b\d{4,5}(?:-\d{4})?\b")
 
     def _line_has_context(self, line: str) -> bool:
         lower = line.lower()
@@ -409,6 +486,7 @@ def build_rule_recognizers(regions: list[str] | None = None) -> list[EntityRecog
         PhoneRecognizerPhi(regions=regions),
         DateRecognizerCustom(),
         MrnRecognizer(),
+        GenericIdRecognizer(),
         AgeRecognizer(),
         LocationRecognizer(),
         PostcodeRecognizer(),
