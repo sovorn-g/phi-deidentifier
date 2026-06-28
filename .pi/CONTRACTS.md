@@ -26,8 +26,9 @@ phi-deidentifier/
 ├── .env.example                # LLM_MODEL, the matching API key, PHI_HASH_KEY (§7)
 ├── .pre-commit-config.yaml     # ruff (lint+format), end-of-file, trailing-whitespace
 ├── README.md                   # Phase 4 deliverable
-├── execute-plan.md
-├── CONTRACTS.md                # this file
+├── .pi/
+│   ├── execute-plan.md
+│   └── CONTRACTS.md            # this file
 ├── data/
 │   ├── notes/                  # note_001.txt … note_030.txt (synthetic; committed)
 │   └── labels.json             # gold spans (§3) — the eval ground truth

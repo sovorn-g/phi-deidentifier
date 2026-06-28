@@ -6,6 +6,7 @@ Contracts: CONTRACTS.md §7.
 from __future__ import annotations
 
 import logging
+import os
 
 from pydantic import BaseModel, Field
 
@@ -32,6 +33,45 @@ class _LLMOutput(BaseModel):
     spans: list[_LLMSpan] = Field(default_factory=list)
 
 
+def _api_key_env_var_for_model(model: str) -> str | None:
+    """Return the provider-specific env var LiteLLM expects for common models."""
+    provider = model.split("/", 1)[0].lower() if "/" in model else ""
+    direct_model = model.lower()
+    if provider in {"anthropic"} or direct_model.startswith("claude-"):
+        return "ANTHROPIC_API_KEY"
+    if provider in {"openai"} or direct_model.startswith(("gpt-", "o1", "o3", "o4")):
+        return "OPENAI_API_KEY"
+    if provider in {"azure", "azure_ai"}:
+        return "AZURE_API_KEY"
+    if provider in {"gemini", "google"}:
+        return "GEMINI_API_KEY"
+    if provider in {"mistral"}:
+        return "MISTRAL_API_KEY"
+    if provider in {"cohere"}:
+        return "COHERE_API_KEY"
+    if provider in {"groq"}:
+        return "GROQ_API_KEY"
+    if provider in {"together_ai", "together"}:
+        return "TOGETHER_API_KEY"
+    if provider in {"openrouter"}:
+        return "OPENROUTER_API_KEY"
+    if provider in {"deepseek"}:
+        return "DEEPSEEK_API_KEY"
+    if provider in {"xai"}:
+        return "XAI_API_KEY"
+    return None
+
+
+def _configure_litellm_api_key(model: str, api_key: str | None) -> dict[str, str]:
+    """Pass a generic API_KEY through to LiteLLM without forcing one provider."""
+    if not api_key:
+        return {}
+    env_var = _api_key_env_var_for_model(model)
+    if env_var and not os.getenv(env_var):
+        os.environ[env_var] = api_key
+    return {"api_key": api_key}
+
+
 def _complete_with_clinical_core(system: str, user: str, schema: type[_LLMOutput]) -> _LLMOutput | None:
     try:
         from clinical_core.llm import LLMClient
@@ -55,11 +95,13 @@ def _complete_with_litellm(system: str, user: str, schema: type[_LLMOutput]) -> 
         {"role": "user", "content": user},
     ]
     try:
+        api_key_kwargs = _configure_litellm_api_key(settings.llm_model, settings.api_key)
         response = litellm.completion(
             model=settings.llm_model,
             messages=messages,
             temperature=0.0,
             response_format={"type": "json_object"},
+            **api_key_kwargs,
         )
         content = response["choices"][0]["message"]["content"] or "{}"
         return schema.model_validate_json(content)
@@ -88,9 +130,6 @@ def detect_llm(
 ) -> list[PHISpan]:
     """Run an LLM second pass and return any additional PHI spans."""
     settings = get_settings()
-    if not settings.phi_use_llm:
-        log.debug("LLM pass disabled in settings")
-        return []
 
     existing_block = "\n".join(
         f"- {s.text!r} ({s.type.value})" for s in existing_spans

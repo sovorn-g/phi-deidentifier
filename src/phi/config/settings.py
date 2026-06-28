@@ -23,7 +23,7 @@ class Settings(BaseSettings):
 
     # Optional LLM pass.
     llm_model: str = "anthropic/claude-haiku-4-5"
-    phi_use_llm: bool = False
+    api_key: str | None = None
 
     # Phone regions and NER threshold defaults.
     phi_regions: str = "NZ,AU"

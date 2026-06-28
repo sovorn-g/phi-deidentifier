@@ -1,176 +1,221 @@
 # PHI De-identifier
 
-A hybrid, defensible PHI de-identification pipeline for clinical free text. It combines **rule-based recognizers** (with verified checksums), **spaCy NER**, and an optional **LLM second pass**, then redacts with one of three strategies: `mask`, `hash`, or `surrogate`.
+Detect and redact protected health information (PHI) in clinical free-text notes.
 
-> **Portfolio demo, not a certified de-identification solution.**  
-> Built and evaluated on ~30 synthetic notes with embedded gold-span labels.
+The pipeline combines deterministic rules, spaCy/Presidio named-entity recognition, and an optional LLM second pass. It can redact detected PHI as typed masks, deterministic hash tokens, or realistic surrogate values.
 
----
+This is a demonstration project for synthetic clinical notes. It is not a certified de-identification product and should not be used as the only privacy control for real patient data.
 
-## Why this matters
+## What It Detects
 
-Privacy is the first question every clinic or health-AI startup asks. A de-identification pipeline that can point to documented algorithms, deterministic merge rules, and measured recall is the unglamorous foundation that makes every other clinical-AI demo safe.
+- Names, organizations, locations, addresses, and postcodes
+- Dates, ages, phone numbers, emails, URLs, and IP addresses
+- Medical record numbers and generic identifiers
+- New Zealand NHI numbers
+- Australian Medicare numbers
+- Australian Individual Healthcare Identifiers (IHI)
 
----
+NZ NHI, AU Medicare, and AU IHI detection includes checksum validation where the identifier format supports it. This reduces false positives from look-alike numbers.
 
-## Quick start
+## Quick Start
+
+Install dependencies:
 
 ```bash
-# 1. Install dependencies (uv-managed)
 uv sync --extra dev
+```
 
-# 2. Run the test suite (offline, LLM disabled)
+Run the tests:
+
+```bash
 uv run pytest -q
+```
 
-# 3. De-identify a single note
+De-identify a sample note:
+
+```bash
 uv run python -m phi.cli fixtures/rich.txt --strategy mask
+```
 
-# 4. Run the evaluation report
+Run the evaluation report:
+
+```bash
 uv run python -m phi.eval.score
+```
 
-# 5. Launch the interactive demo
+Launch the Streamlit demo:
+
+```bash
 uv run streamlit run src/phi/app.py
 ```
 
----
+## CLI Usage
 
-## Architecture
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                         Input note                          │
-└─────────────────────────┬───────────────────────────────────┘
-                          ▼
-        ┌─────────────────┴─────────────────┐
-        │  Rule-based recognizers (§5)      │  ← deterministic, high precision
-        │  NHI/Medicare/IHI checksums,      │
-        │  phones, dates, emails, URLs,     │
-        │  IPs, MRNs, ages, postcodes       │
-        └─────────────────┬─────────────────┘
-                          ▼
-        ┌─────────────────┴─────────────────┐
-        │  spaCy NER (en_core_web_lg)       │  ← PERSON / LOCATION / ORG
-        └─────────────────┬─────────────────┘
-                          ▼
-        ┌─────────────────┴─────────────────┐
-        │  Optional LLM second pass         │  ← context-dependent residual PHI
-        └─────────────────┬─────────────────┘
-                          ▼
-        ┌─────────────────┴─────────────────┐
-        │  Deterministic merge (§8)         │  ← rule > ner > llm
-        └─────────────────┬─────────────────┘
-                          ▼
-        ┌─────────────────┴─────────────────┐
-        │  Redaction: mask / hash / surrogate│
-        └───────────────────────────────────┘
+```bash
+uv run python -m phi.cli path/to/note.txt --strategy mask
 ```
 
-Key design choices:
-- **Checksums are mandatory** for NZ NHI (old format), AU Medicare, and AU IHI. Pattern-matching alone is not enough.
-- **Rule layer owns structured identifiers; NER owns names/places/orgs.** Merge precedence prevents a postcode from swallowing a date.
-- **LLM is optional and default-off.** The project runs, tests, and scores entirely offline.
-- **Idempotency:** redacted tokens are never re-detected, so `deidentify(deidentify(x)) == deidentify(x)`.
+Available strategies:
 
----
+| Strategy | Example | Description |
+| --- | --- | --- |
+| `mask` | `[REDACTED:PERSON]` | Replaces each span with its entity type. |
+| `hash` | `[PERSON:a3f9b2c1d0]` | Stable pseudonymous token based on `PHI_HASH_KEY`. |
+| `surrogate` | `Emily Johnson` | Stable fake value of the same general type. |
 
-## Redaction strategies
+Use `--no-ner` to disable spaCy/Presidio NER:
 
-| Strategy | Example output | Properties |
-|----------|----------------|------------|
-| `mask` | `[REDACTED:PERSON]` | Irreversible, non-consistent |
-| `hash` | `[PERSON:a3f9b2c1d0]` | Deterministic, consistent across notes, pseudonymous |
-| `surrogate` | `Emily Johnson` | Realistic fake of same type, consistent per entity |
-
-Hash and surrogate require `PHI_HASH_KEY` in `.env`.
-
----
-
-## Evaluation
-
-Matching rule: **span-level, type-aware, partial-overlap** with `IoU ≥ 0.5`. A stricter exact-boundary column is also reported.
-
-Latest run on the synthetic corpus (`uv run python -m phi.eval.score`):
-
-| Aggregate | Relaxed P / R / F1 | Strict P / R / F1 |
-|-----------|-------------------|-------------------|
-| Identifiers | 1.000 / **0.993** / 0.996 | 1.000 / **0.993** / 0.996 |
-| Overall | 0.985 / 0.985 / 0.985 | 0.965 / 0.965 / 0.965 |
-
-Per-type table is written to [`eval/report.md`](eval/report.md).
-
-> These numbers are **illustrative on a small synthetic set** authored alongside the recognizers. They are not a validation claim on real clinical data.
-
----
-
-## HIPAA-18 to entity-type mapping
-
-| HIPAA category | EntityType | Notes |
-|----------------|------------|-------|
-| Name | `PERSON` | |
-| Dates (except year) | `DATE` | Includes DOB, admission dates |
-| Phone / Fax | `PHONE` | |
-| Email | `EMAIL` | |
-| SSN | `ID` | Out of scope for text notes |
-| MRN | `MRN` | |
-| Health plan / account # | `ID` | |
-| Certificate / license # | `ID` | |
-| Vehicle / device id | `ID` | |
-| URL / IP | `URL` / `IP` | |
-| Biometric / full-face photo | — | Out of scope for a text pipeline |
-| Address (geographic subdivisions) | `LOCATION` / `POSTCODE` | |
-| Age > 89 | `AGE` | All ages flagged; >89 scored strictly |
-| NZ NHI | `NHI` | Old-format checksum validated |
-| AU Medicare | `MEDICARE` | Weighted mod-10 check digit |
-| AU IHI | `IHI` | Luhn checksum |
-
----
-
-## Project layout
-
-```
-phi-deidentifier/
-├── src/phi/
-│   ├── detect/
-│   │   ├── rules.py          # regex + checksum recognizers
-│   │   ├── ner.py            # Presidio + spaCy NER
-│   │   ├── llm.py            # optional LLM second pass
-│   │   └── pipeline.py       # merge logic
-│   ├── redact/
-│   │   └── strategies.py     # mask / hash / surrogate
-│   ├── eval/
-│   │   └── score.py          # span-level P/R/F1
-│   ├── config/settings.py    # pydantic-settings
-│   ├── models.py             # PHISpan, EntityType, DeidConfig
-│   ├── corpus.py             # gold-label loader
-│   ├── deidentify.py         # public API
-│   ├── cli.py                # command-line tool
-│   └── app.py                # Streamlit demo
-├── data/
-│   ├── notes/                # synthetic notes
-│   └── labels.json           # gold spans
-├── fixtures/                 # rich.txt, au.txt, sparse.txt
-├── tests/                    # pytest suite
-├── scripts/generate_corpus.py
-├── eval/report.md
-└── pyproject.toml
+```bash
+uv run python -m phi.cli fixtures/rich.txt --strategy mask --no-ner
 ```
 
----
+Use `--llm` to enable the optional LLM second pass:
+
+```bash
+uv run python -m phi.cli fixtures/rich.txt --strategy mask --llm
+```
+
+## Python API
+
+```python
+from phi.deidentify import deidentify
+from phi.models import DeidConfig
+
+text = "Patient Jane Smith, NHI ABC1235, was seen on 15/03/1980."
+
+result = deidentify(
+    text,
+    DeidConfig(strategy="mask", use_llm=False),
+)
+
+print(result.redacted_text)
+print(result.audit)
+```
+
+`result.spans` contains detected spans with offsets into the original text. The audit output reports counts by entity type only; it does not include PHI values.
 
 ## Configuration
 
-Copy `.env.example` to `.env` and set:
+Copy `.env.example` to `.env` when using hash/surrogate redaction or the optional LLM pass.
 
 ```bash
-PHI_HASH_KEY=change-me-to-a-long-random-secret   # required for hash/surrogate
-LLM_MODEL=anthropic/claude-haiku-4-5             # optional
-ANTHROPIC_API_KEY=sk-ant-...                     # only if use_llm=True
+PHI_HASH_KEY=change-me-to-a-long-random-secret
+LLM_MODEL=anthropic/claude-haiku-4-5
+API_KEY=sk-...
+PHI_REGIONS=NZ,AU
 ```
 
-The LLM layer is controlled by `use_llm` in `DeidConfig` and defaults to **False**, so tests and evaluation run offline.
+Configuration fields:
 
----
+| Variable | Required | Description |
+| --- | --- | --- |
+| `PHI_HASH_KEY` | For `hash` and `surrogate` | Secret used to create stable hash tokens and surrogate values. |
+| `LLM_MODEL` | For `--llm` | LiteLLM model name, such as `anthropic/claude-haiku-4-5`, `openai/gpt-4o-mini`, or another supported provider/model. |
+| `API_KEY` | For `--llm` | Provider API key used by LiteLLM. |
+| `PHI_REGIONS` | No | Comma-separated phone parsing regions. Defaults to `NZ,AU`. |
+
+The LLM pass is off by default. Tests and evaluation run offline unless `--llm` or `DeidConfig(use_llm=True)` is used.
+
+The generic `API_KEY` variable lets users switch providers by changing `LLM_MODEL`.
+
+## How It Works
+
+```text
+Input note
+  -> rule recognizers
+  -> spaCy/Presidio NER
+  -> optional LLM second pass
+  -> deterministic overlap merge
+  -> redaction strategy
+  -> redacted note + privacy-safe audit counts
+```
+
+Detection layers:
+
+- Rules handle structured identifiers, dates, phone numbers, emails, URLs, IPs, MRNs, ages, and postcodes.
+- NER handles people, places, and organizations.
+- The optional LLM pass looks for residual context-dependent PHI that rules and NER may miss.
+
+When spans overlap, rule-based spans take precedence over NER spans, and NER spans take precedence over LLM spans. This keeps checksum-validated identifiers from being overwritten by broader entity matches.
+
+## Evaluation
+
+The repository includes 30 synthetic notes in `data/notes/` and gold labels in `data/labels.json`.
+
+Run:
+
+```bash
+uv run python -m phi.eval.score
+```
+
+Latest synthetic-corpus result:
+
+| Aggregate | Relaxed P / R / F1 | Strict P / R / F1 |
+| --- | --- | --- |
+| Identifiers | 1.000 / 0.993 / 0.996 | 1.000 / 0.993 / 0.996 |
+| Overall | 0.985 / 0.985 / 0.985 | 0.965 / 0.965 / 0.965 |
+
+Relaxed matching is span-level, type-aware matching with character overlap. Strict matching requires exact span boundaries. The full per-type table is written to `eval/report.md`.
+
+These metrics are measured only on the included synthetic notes. They are useful for regression testing and demonstration, not proof of performance on real clinical data.
+
+## Entity Types
+
+| Entity type | Examples |
+| --- | --- |
+| `PERSON` | Patient, family member, clinician names |
+| `LOCATION` | Street addresses, suburbs, cities, facilities |
+| `ORG` | Clinics, hospitals, employers |
+| `DATE` | DOB, admission date, appointment date |
+| `AGE` | Ages in text |
+| `PHONE` | NZ/AU phone numbers |
+| `EMAIL` | Email addresses |
+| `URL` | Web addresses |
+| `IP` | IP addresses |
+| `MRN` | Local medical record numbers |
+| `NHI` | New Zealand National Health Index |
+| `MEDICARE` | Australian Medicare card number |
+| `IHI` | Australian Individual Healthcare Identifier |
+| `POSTCODE` | NZ/AU 4-digit postcodes when address context is present |
+| `ID` | Generic account, device, certificate, or other identifiers |
+
+## Project Layout
+
+```text
+src/phi/
+  app.py                 Streamlit demo
+  cli.py                 Command-line interface
+  deidentify.py          Public API
+  models.py              Entity and result models
+  corpus.py              Synthetic corpus loader
+  config/settings.py     Environment-based settings
+  detect/
+    rules.py             Regex and checksum recognizers
+    ner.py               Presidio/spaCy NER
+    llm.py               Optional LiteLLM second pass
+    pipeline.py          Detection and merge pipeline
+  redact/
+    strategies.py        Mask, hash, and surrogate redaction
+  eval/
+    score.py             Evaluation metrics
+
+data/
+  notes/                 Synthetic notes
+  labels.json            Gold spans
+
+fixtures/                Small sample notes for tests and demos
+tests/                   Pytest suite
+eval/report.md           Latest evaluation report
+```
+
+## Limitations
+
+- The included corpus is synthetic and small.
+- Performance on real clinical notes is not validated.
+- Free-text de-identification is imperfect; missed PHI is possible.
+- Images, biometrics, and full-face photos are outside the scope of this text-only pipeline.
+- The optional LLM pass sends note text to the configured model provider. Do not enable it for sensitive data unless the provider and data-handling arrangement are appropriate.
 
 ## License
 
-MIT — portfolio / educational use.
+MIT
