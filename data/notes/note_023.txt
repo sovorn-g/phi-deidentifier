@@ -1,0 +1,7 @@
+Patient: Elise Fox
+Medicare: 3455812282
+IHI: 8003606231665872
+Contact: 0463 163 311
+DOB: 14/03/1947
+Address: 966 Matawaiweka Plaza, Baxterside 1096
+Reviewed in clinic today. Plan for routine follow-up. No acute concerns. Patient advised to call if symptoms worsen. Continue current medications.

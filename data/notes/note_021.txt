@@ -1,0 +1,8 @@
+Patient: David Wells
+Medicare: 6721489561
+IHI: 8003603433200376
+Contact: 0488 970 886
+DOB: 17/05/1976
+MRN: 519066
+Address: 915 Tucker Avenue, Forresttown 1090
+No acute concerns. Continue current medications. Patient advised to call if symptoms worsen. Plan for routine follow-up. Reviewed in clinic today.

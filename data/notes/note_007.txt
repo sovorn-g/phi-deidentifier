@@ -1,0 +1,7 @@
+Patient: Nathan Kenny
+NHI: QSJ8029
+Contact: 021 798 9797
+DOB: 22/10/1983
+MRN: 407757
+Address: 4 Bell Street, Griffithsburgh 8433
+Plan for routine follow-up. Reviewed in clinic today. Patient advised to call if symptoms worsen. No acute concerns. Continue current medications.

@@ -1,0 +1,9 @@
+Patient: David Anderson
+Medicare: 3489638303
+IHI: 8003606578713319
+Contact: +61 480 335 702
+DOB: 04/02/1955
+Email: brett95@example.org
+MRN: 801474
+Address: 136 Koromaungamaunga Range Road, Rangiwai 9834
+Continue current medications. No acute concerns. Reviewed in clinic today. Plan for routine follow-up. Patient advised to call if symptoms worsen.

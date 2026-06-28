@@ -1,0 +1,7 @@
+Patient: Phillip Hart
+NHI: NDM5941
+Contact: 021 926 1711
+DOB: 15/06/1963
+Email: dylan51@example.org
+Address: 850 Bull-Miles Way, East Lucasmouth 5803
+No acute concerns. Reviewed in clinic today. Plan for routine follow-up. Continue current medications. Patient advised to call if symptoms worsen.

@@ -1,0 +1,8 @@
+Patient: Anthony Ireland
+Medicare: 6901627211
+IHI: 8003604653755644
+Contact: 0463 358 954
+DOB: 07/12/1992
+MRN: 781725
+Address: 773 Koropongauru Road, Parkerborough 1659
+Plan for routine follow-up. Continue current medications. Patient advised to call if symptoms worsen. No acute concerns. Reviewed in clinic today.

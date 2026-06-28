@@ -1,0 +1,7 @@
+Patient: Jackson Skinner
+Medicare: 3799650723
+IHI: 8003602735454947
+Contact: +61 434 187 347
+DOB: 05/03/1951
+Email: smorris@example.net
+No acute concerns. Continue current medications. Reviewed in clinic today. Patient advised to call if symptoms worsen. Plan for routine follow-up.

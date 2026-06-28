@@ -1,0 +1,7 @@
+Patient: Claudia Scott
+NHI: ZTV3733
+Contact: 021 379 8140
+DOB: 10/02/1964
+Email: uperry@example.org
+MRN: 812131
+Patient advised to call if symptoms worsen. Continue current medications. Reviewed in clinic today. Plan for routine follow-up. No acute concerns.

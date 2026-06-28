@@ -1,0 +1,6 @@
+Patient: Nicholas Wilkinson
+NHI: NEX4758
+Contact: 021 869 2188
+DOB: 20/04/1951
+Email: craig62@example.com
+Patient advised to call if symptoms worsen. Plan for routine follow-up. Continue current medications. No acute concerns. Reviewed in clinic today.

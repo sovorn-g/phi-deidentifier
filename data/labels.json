@@ -1,0 +1,1373 @@
+{
+  "version": "1",
+  "notes": [
+    {
+      "id": "note_001",
+      "file": "data/notes/note_001.txt",
+      "spans": [
+        {
+          "start": 9,
+          "end": 21,
+          "type": "PERSON",
+          "text": "Peter Jensen"
+        },
+        {
+          "start": 27,
+          "end": 34,
+          "type": "NHI",
+          "text": "WDA4332"
+        },
+        {
+          "start": 40,
+          "end": 50,
+          "type": "DATE",
+          "text": "30/06/1979"
+        },
+        {
+          "start": 58,
+          "end": 70,
+          "type": "PHONE",
+          "text": "021 242 2679"
+        },
+        {
+          "start": 80,
+          "end": 115,
+          "type": "LOCATION",
+          "text": "605 Bradley Avenue, Christopherbury"
+        },
+        {
+          "start": 117,
+          "end": 121,
+          "type": "POSTCODE",
+          "text": "7912"
+        },
+        {
+          "start": 127,
+          "end": 133,
+          "type": "MRN",
+          "text": "133326"
+        },
+        {
+          "start": 171,
+          "end": 183,
+          "type": "PERSON",
+          "text": "Peter Lawson"
+        }
+      ]
+    },
+    {
+      "id": "note_002",
+      "file": "data/notes/note_002.txt",
+      "spans": [
+        {
+          "start": 6,
+          "end": 18,
+          "type": "PERSON",
+          "text": "Madison Hope"
+        },
+        {
+          "start": 29,
+          "end": 39,
+          "type": "MEDICARE",
+          "text": "2133890802"
+        },
+        {
+          "start": 45,
+          "end": 61,
+          "type": "IHI",
+          "text": "8003608637940263"
+        },
+        {
+          "start": 69,
+          "end": 81,
+          "type": "PHONE",
+          "text": "0453 384 259"
+        },
+        {
+          "start": 106,
+          "end": 115,
+          "type": "LOCATION",
+          "text": "Taitauiti"
+        },
+        {
+          "start": 116,
+          "end": 120,
+          "type": "POSTCODE",
+          "text": "2220"
+        },
+        {
+          "start": 165,
+          "end": 175,
+          "type": "DATE",
+          "text": "28/11/1930"
+        }
+      ]
+    },
+    {
+      "id": "note_003",
+      "file": "data/notes/note_003.txt",
+      "spans": [
+        {
+          "start": 8,
+          "end": 20,
+          "type": "PERSON",
+          "text": "Lynda Dobson"
+        }
+      ]
+    },
+    {
+      "id": "note_004",
+      "file": "data/notes/note_004.txt",
+      "spans": [
+        {
+          "start": 9,
+          "end": 21,
+          "type": "PERSON",
+          "text": "Phillip Hart"
+        },
+        {
+          "start": 27,
+          "end": 34,
+          "type": "NHI",
+          "text": "NDM5941"
+        },
+        {
+          "start": 44,
+          "end": 56,
+          "type": "PHONE",
+          "text": "021 926 1711"
+        },
+        {
+          "start": 62,
+          "end": 72,
+          "type": "DATE",
+          "text": "15/06/1963"
+        },
+        {
+          "start": 80,
+          "end": 99,
+          "type": "EMAIL",
+          "text": "dylan51@example.org"
+        },
+        {
+          "start": 109,
+          "end": 127,
+          "type": "LOCATION",
+          "text": "850 Bull-Miles Way"
+        },
+        {
+          "start": 129,
+          "end": 144,
+          "type": "LOCATION",
+          "text": "East Lucasmouth"
+        },
+        {
+          "start": 145,
+          "end": 149,
+          "type": "POSTCODE",
+          "text": "5803"
+        }
+      ]
+    },
+    {
+      "id": "note_005",
+      "file": "data/notes/note_005.txt",
+      "spans": [
+        {
+          "start": 9,
+          "end": 22,
+          "type": "PERSON",
+          "text": "Xavier Duncan"
+        },
+        {
+          "start": 33,
+          "end": 43,
+          "type": "MEDICARE",
+          "text": "2341316424"
+        },
+        {
+          "start": 49,
+          "end": 65,
+          "type": "IHI",
+          "text": "8003605255341923"
+        },
+        {
+          "start": 75,
+          "end": 90,
+          "type": "PHONE",
+          "text": "+61 430 573 488"
+        },
+        {
+          "start": 96,
+          "end": 106,
+          "type": "DATE",
+          "text": "19/07/1973"
+        }
+      ]
+    },
+    {
+      "id": "note_006",
+      "file": "data/notes/note_006.txt",
+      "spans": [
+        {
+          "start": 9,
+          "end": 30,
+          "type": "PERSON",
+          "text": "Stella Price-McDonald"
+        },
+        {
+          "start": 41,
+          "end": 51,
+          "type": "MEDICARE",
+          "text": "5413953794"
+        },
+        {
+          "start": 57,
+          "end": 73,
+          "type": "IHI",
+          "text": "8003607242388496"
+        },
+        {
+          "start": 83,
+          "end": 98,
+          "type": "PHONE",
+          "text": "+61 456 324 241"
+        },
+        {
+          "start": 104,
+          "end": 114,
+          "type": "DATE",
+          "text": "30/11/1935"
+        },
+        {
+          "start": 122,
+          "end": 148,
+          "type": "EMAIL",
+          "text": "justineskinner@example.org"
+        },
+        {
+          "start": 154,
+          "end": 160,
+          "type": "MRN",
+          "text": "214975"
+        },
+        {
+          "start": 170,
+          "end": 191,
+          "type": "LOCATION",
+          "text": "812 Kowhaitere Street"
+        },
+        {
+          "start": 193,
+          "end": 204,
+          "type": "LOCATION",
+          "text": "Fishermouth"
+        },
+        {
+          "start": 205,
+          "end": 209,
+          "type": "POSTCODE",
+          "text": "3621"
+        }
+      ]
+    },
+    {
+      "id": "note_007",
+      "file": "data/notes/note_007.txt",
+      "spans": [
+        {
+          "start": 9,
+          "end": 21,
+          "type": "PERSON",
+          "text": "Nathan Kenny"
+        },
+        {
+          "start": 27,
+          "end": 34,
+          "type": "NHI",
+          "text": "QSJ8029"
+        },
+        {
+          "start": 44,
+          "end": 56,
+          "type": "PHONE",
+          "text": "021 798 9797"
+        },
+        {
+          "start": 62,
+          "end": 72,
+          "type": "DATE",
+          "text": "22/10/1983"
+        },
+        {
+          "start": 78,
+          "end": 84,
+          "type": "MRN",
+          "text": "407757"
+        },
+        {
+          "start": 94,
+          "end": 107,
+          "type": "LOCATION",
+          "text": "4 Bell Street"
+        },
+        {
+          "start": 109,
+          "end": 123,
+          "type": "LOCATION",
+          "text": "Griffithsburgh"
+        },
+        {
+          "start": 124,
+          "end": 128,
+          "type": "POSTCODE",
+          "text": "8433"
+        }
+      ]
+    },
+    {
+      "id": "note_008",
+      "file": "data/notes/note_008.txt",
+      "spans": [
+        {
+          "start": 9,
+          "end": 31,
+          "type": "PERSON",
+          "text": "Nikora Spencer-Freeman"
+        },
+        {
+          "start": 42,
+          "end": 52,
+          "type": "MEDICARE",
+          "text": "4893252815"
+        },
+        {
+          "start": 58,
+          "end": 74,
+          "type": "IHI",
+          "text": "8003600957015438"
+        },
+        {
+          "start": 84,
+          "end": 99,
+          "type": "PHONE",
+          "text": "+61 482 180 187"
+        },
+        {
+          "start": 105,
+          "end": 115,
+          "type": "DATE",
+          "text": "21/11/1983"
+        }
+      ]
+    },
+    {
+      "id": "note_009",
+      "file": "data/notes/note_009.txt",
+      "spans": [
+        {
+          "start": 9,
+          "end": 23,
+          "type": "PERSON",
+          "text": "David Anderson"
+        },
+        {
+          "start": 34,
+          "end": 44,
+          "type": "MEDICARE",
+          "text": "3489638303"
+        },
+        {
+          "start": 50,
+          "end": 66,
+          "type": "IHI",
+          "text": "8003606578713319"
+        },
+        {
+          "start": 76,
+          "end": 91,
+          "type": "PHONE",
+          "text": "+61 480 335 702"
+        },
+        {
+          "start": 97,
+          "end": 107,
+          "type": "DATE",
+          "text": "04/02/1955"
+        },
+        {
+          "start": 115,
+          "end": 134,
+          "type": "EMAIL",
+          "text": "brett95@example.org"
+        },
+        {
+          "start": 140,
+          "end": 146,
+          "type": "MRN",
+          "text": "801474"
+        },
+        {
+          "start": 156,
+          "end": 187,
+          "type": "LOCATION",
+          "text": "136 Koromaungamaunga Range Road"
+        },
+        {
+          "start": 189,
+          "end": 197,
+          "type": "LOCATION",
+          "text": "Rangiwai"
+        },
+        {
+          "start": 198,
+          "end": 202,
+          "type": "POSTCODE",
+          "text": "9834"
+        }
+      ]
+    },
+    {
+      "id": "note_010",
+      "file": "data/notes/note_010.txt",
+      "spans": [
+        {
+          "start": 9,
+          "end": 24,
+          "type": "PERSON",
+          "text": "Lauren Prentice"
+        },
+        {
+          "start": 35,
+          "end": 45,
+          "type": "MEDICARE",
+          "text": "3116566751"
+        },
+        {
+          "start": 51,
+          "end": 67,
+          "type": "IHI",
+          "text": "8003601065133386"
+        },
+        {
+          "start": 77,
+          "end": 89,
+          "type": "PHONE",
+          "text": "0467 243 532"
+        },
+        {
+          "start": 95,
+          "end": 105,
+          "type": "DATE",
+          "text": "28/11/1963"
+        },
+        {
+          "start": 111,
+          "end": 117,
+          "type": "MRN",
+          "text": "947272"
+        }
+      ]
+    },
+    {
+      "id": "note_011",
+      "file": "data/notes/note_011.txt",
+      "spans": [
+        {
+          "start": 9,
+          "end": 30,
+          "type": "PERSON",
+          "text": "Jennifer Cook-Jacques"
+        },
+        {
+          "start": 41,
+          "end": 51,
+          "type": "MEDICARE",
+          "text": "3267736022"
+        },
+        {
+          "start": 57,
+          "end": 73,
+          "type": "IHI",
+          "text": "8003606064746872"
+        },
+        {
+          "start": 83,
+          "end": 95,
+          "type": "PHONE",
+          "text": "0429 294 403"
+        },
+        {
+          "start": 101,
+          "end": 111,
+          "type": "DATE",
+          "text": "26/03/1970"
+        },
+        {
+          "start": 117,
+          "end": 123,
+          "type": "MRN",
+          "text": "712554"
+        },
+        {
+          "start": 133,
+          "end": 147,
+          "type": "LOCATION",
+          "text": "162 Watts Park"
+        },
+        {
+          "start": 149,
+          "end": 159,
+          "type": "LOCATION",
+          "text": "Blakeville"
+        },
+        {
+          "start": 160,
+          "end": 164,
+          "type": "POSTCODE",
+          "text": "9701"
+        }
+      ]
+    },
+    {
+      "id": "note_012",
+      "file": "data/notes/note_012.txt",
+      "spans": [
+        {
+          "start": 9,
+          "end": 26,
+          "type": "PERSON",
+          "text": "Mackenzie O'Brien"
+        },
+        {
+          "start": 32,
+          "end": 39,
+          "type": "NHI",
+          "text": "XHN1934"
+        },
+        {
+          "start": 49,
+          "end": 61,
+          "type": "PHONE",
+          "text": "021 692 1651"
+        },
+        {
+          "start": 67,
+          "end": 77,
+          "type": "DATE",
+          "text": "19/12/1976"
+        },
+        {
+          "start": 85,
+          "end": 102,
+          "type": "EMAIL",
+          "text": "jlane@example.org"
+        }
+      ]
+    },
+    {
+      "id": "note_013",
+      "file": "data/notes/note_013.txt",
+      "spans": [
+        {
+          "start": 9,
+          "end": 27,
+          "type": "PERSON",
+          "text": "Nicholas Wilkinson"
+        },
+        {
+          "start": 33,
+          "end": 40,
+          "type": "NHI",
+          "text": "NEX4758"
+        },
+        {
+          "start": 50,
+          "end": 62,
+          "type": "PHONE",
+          "text": "021 869 2188"
+        },
+        {
+          "start": 68,
+          "end": 78,
+          "type": "DATE",
+          "text": "20/04/1951"
+        },
+        {
+          "start": 86,
+          "end": 105,
+          "type": "EMAIL",
+          "text": "craig62@example.com"
+        }
+      ]
+    },
+    {
+      "id": "note_014",
+      "file": "data/notes/note_014.txt",
+      "spans": [
+        {
+          "start": 9,
+          "end": 21,
+          "type": "PERSON",
+          "text": "Wayne Willis"
+        },
+        {
+          "start": 27,
+          "end": 34,
+          "type": "NHI",
+          "text": "MCH5429"
+        },
+        {
+          "start": 44,
+          "end": 56,
+          "type": "PHONE",
+          "text": "021 548 9900"
+        },
+        {
+          "start": 62,
+          "end": 72,
+          "type": "DATE",
+          "text": "12/01/1951"
+        }
+      ]
+    },
+    {
+      "id": "note_015",
+      "file": "data/notes/note_015.txt",
+      "spans": [
+        {
+          "start": 9,
+          "end": 21,
+          "type": "PERSON",
+          "text": "Rachel Allan"
+        },
+        {
+          "start": 32,
+          "end": 42,
+          "type": "MEDICARE",
+          "text": "3411824495"
+        },
+        {
+          "start": 48,
+          "end": 64,
+          "type": "IHI",
+          "text": "8003603534874012"
+        },
+        {
+          "start": 74,
+          "end": 86,
+          "type": "PHONE",
+          "text": "0491 533 949"
+        },
+        {
+          "start": 92,
+          "end": 102,
+          "type": "DATE",
+          "text": "15/10/1938"
+        },
+        {
+          "start": 108,
+          "end": 114,
+          "type": "MRN",
+          "text": "877236"
+        },
+        {
+          "start": 124,
+          "end": 140,
+          "type": "LOCATION",
+          "text": "575 Simpson Lane"
+        },
+        {
+          "start": 142,
+          "end": 150,
+          "type": "LOCATION",
+          "text": "Mokonuku"
+        },
+        {
+          "start": 151,
+          "end": 155,
+          "type": "POSTCODE",
+          "text": "8007"
+        }
+      ]
+    },
+    {
+      "id": "note_016",
+      "file": "data/notes/note_016.txt",
+      "spans": [
+        {
+          "start": 9,
+          "end": 20,
+          "type": "PERSON",
+          "text": "Lance Craig"
+        },
+        {
+          "start": 26,
+          "end": 33,
+          "type": "NHI",
+          "text": "MUT2621"
+        },
+        {
+          "start": 43,
+          "end": 55,
+          "type": "PHONE",
+          "text": "021 142 6050"
+        },
+        {
+          "start": 61,
+          "end": 71,
+          "type": "DATE",
+          "text": "09/11/1971"
+        }
+      ]
+    },
+    {
+      "id": "note_017",
+      "file": "data/notes/note_017.txt",
+      "spans": [
+        {
+          "start": 9,
+          "end": 19,
+          "type": "PERSON",
+          "text": "Mason West"
+        },
+        {
+          "start": 30,
+          "end": 40,
+          "type": "MEDICARE",
+          "text": "4869232244"
+        },
+        {
+          "start": 46,
+          "end": 62,
+          "type": "IHI",
+          "text": "8003600256342160"
+        },
+        {
+          "start": 72,
+          "end": 87,
+          "type": "PHONE",
+          "text": "+61 438 304 936"
+        },
+        {
+          "start": 93,
+          "end": 103,
+          "type": "DATE",
+          "text": "20/03/1939"
+        },
+        {
+          "start": 111,
+          "end": 131,
+          "type": "EMAIL",
+          "text": "olivia43@example.org"
+        }
+      ]
+    },
+    {
+      "id": "note_018",
+      "file": "data/notes/note_018.txt",
+      "spans": [
+        {
+          "start": 9,
+          "end": 21,
+          "type": "PERSON",
+          "text": "Stephen Gibb"
+        },
+        {
+          "start": 27,
+          "end": 34,
+          "type": "NHI",
+          "text": "JCJ5865"
+        },
+        {
+          "start": 44,
+          "end": 56,
+          "type": "PHONE",
+          "text": "021 795 9785"
+        },
+        {
+          "start": 62,
+          "end": 72,
+          "type": "DATE",
+          "text": "03/03/1937"
+        },
+        {
+          "start": 78,
+          "end": 84,
+          "type": "MRN",
+          "text": "373903"
+        },
+        {
+          "start": 94,
+          "end": 111,
+          "type": "LOCATION",
+          "text": "40 Jackson Street"
+        },
+        {
+          "start": 113,
+          "end": 121,
+          "type": "LOCATION",
+          "text": "Wakakoro"
+        },
+        {
+          "start": 122,
+          "end": 126,
+          "type": "POSTCODE",
+          "text": "5349"
+        }
+      ]
+    },
+    {
+      "id": "note_019",
+      "file": "data/notes/note_019.txt",
+      "spans": [
+        {
+          "start": 9,
+          "end": 20,
+          "type": "PERSON",
+          "text": "Cheryl Lane"
+        },
+        {
+          "start": 26,
+          "end": 33,
+          "type": "NHI",
+          "text": "SDN9343"
+        },
+        {
+          "start": 43,
+          "end": 55,
+          "type": "PHONE",
+          "text": "021 145 8144"
+        },
+        {
+          "start": 61,
+          "end": 71,
+          "type": "DATE",
+          "text": "20/10/1977"
+        },
+        {
+          "start": 79,
+          "end": 102,
+          "type": "EMAIL",
+          "text": "sarahbarker@example.net"
+        }
+      ]
+    },
+    {
+      "id": "note_020",
+      "file": "data/notes/note_020.txt",
+      "spans": [
+        {
+          "start": 9,
+          "end": 21,
+          "type": "PERSON",
+          "text": "Paul Kennedy"
+        },
+        {
+          "start": 32,
+          "end": 42,
+          "type": "MEDICARE",
+          "text": "4951484653"
+        },
+        {
+          "start": 48,
+          "end": 64,
+          "type": "IHI",
+          "text": "8003606482366295"
+        },
+        {
+          "start": 74,
+          "end": 89,
+          "type": "PHONE",
+          "text": "+61 480 953 100"
+        },
+        {
+          "start": 95,
+          "end": 105,
+          "type": "DATE",
+          "text": "18/11/1982"
+        },
+        {
+          "start": 113,
+          "end": 134,
+          "type": "EMAIL",
+          "text": "raymond87@example.org"
+        }
+      ]
+    },
+    {
+      "id": "note_021",
+      "file": "data/notes/note_021.txt",
+      "spans": [
+        {
+          "start": 9,
+          "end": 20,
+          "type": "PERSON",
+          "text": "David Wells"
+        },
+        {
+          "start": 31,
+          "end": 41,
+          "type": "MEDICARE",
+          "text": "6721489561"
+        },
+        {
+          "start": 47,
+          "end": 63,
+          "type": "IHI",
+          "text": "8003603433200376"
+        },
+        {
+          "start": 73,
+          "end": 85,
+          "type": "PHONE",
+          "text": "0488 970 886"
+        },
+        {
+          "start": 91,
+          "end": 101,
+          "type": "DATE",
+          "text": "17/05/1976"
+        },
+        {
+          "start": 107,
+          "end": 113,
+          "type": "MRN",
+          "text": "519066"
+        },
+        {
+          "start": 123,
+          "end": 140,
+          "type": "LOCATION",
+          "text": "915 Tucker Avenue"
+        },
+        {
+          "start": 142,
+          "end": 153,
+          "type": "LOCATION",
+          "text": "Forresttown"
+        },
+        {
+          "start": 154,
+          "end": 158,
+          "type": "POSTCODE",
+          "text": "1090"
+        }
+      ]
+    },
+    {
+      "id": "note_022",
+      "file": "data/notes/note_022.txt",
+      "spans": [
+        {
+          "start": 9,
+          "end": 25,
+          "type": "PERSON",
+          "text": "Anthony Anderson"
+        },
+        {
+          "start": 36,
+          "end": 46,
+          "type": "MEDICARE",
+          "text": "6708317224"
+        },
+        {
+          "start": 52,
+          "end": 68,
+          "type": "IHI",
+          "text": "8003608895798684"
+        },
+        {
+          "start": 78,
+          "end": 90,
+          "type": "PHONE",
+          "text": "0467 262 861"
+        },
+        {
+          "start": 96,
+          "end": 106,
+          "type": "DATE",
+          "text": "05/04/1956"
+        },
+        {
+          "start": 112,
+          "end": 118,
+          "type": "MRN",
+          "text": "915451"
+        }
+      ]
+    },
+    {
+      "id": "note_023",
+      "file": "data/notes/note_023.txt",
+      "spans": [
+        {
+          "start": 9,
+          "end": 18,
+          "type": "PERSON",
+          "text": "Elise Fox"
+        },
+        {
+          "start": 29,
+          "end": 39,
+          "type": "MEDICARE",
+          "text": "3455812282"
+        },
+        {
+          "start": 45,
+          "end": 61,
+          "type": "IHI",
+          "text": "8003606231665872"
+        },
+        {
+          "start": 71,
+          "end": 83,
+          "type": "PHONE",
+          "text": "0463 163 311"
+        },
+        {
+          "start": 89,
+          "end": 99,
+          "type": "DATE",
+          "text": "14/03/1947"
+        },
+        {
+          "start": 109,
+          "end": 130,
+          "type": "LOCATION",
+          "text": "966 Matawaiweka Plaza"
+        },
+        {
+          "start": 132,
+          "end": 142,
+          "type": "LOCATION",
+          "text": "Baxterside"
+        },
+        {
+          "start": 143,
+          "end": 147,
+          "type": "POSTCODE",
+          "text": "1096"
+        }
+      ]
+    },
+    {
+      "id": "note_024",
+      "file": "data/notes/note_024.txt",
+      "spans": [
+        {
+          "start": 9,
+          "end": 22,
+          "type": "PERSON",
+          "text": "Claudia Scott"
+        },
+        {
+          "start": 28,
+          "end": 35,
+          "type": "NHI",
+          "text": "ZTV3733"
+        },
+        {
+          "start": 45,
+          "end": 57,
+          "type": "PHONE",
+          "text": "021 379 8140"
+        },
+        {
+          "start": 63,
+          "end": 73,
+          "type": "DATE",
+          "text": "10/02/1964"
+        },
+        {
+          "start": 81,
+          "end": 99,
+          "type": "EMAIL",
+          "text": "uperry@example.org"
+        },
+        {
+          "start": 105,
+          "end": 111,
+          "type": "MRN",
+          "text": "812131"
+        }
+      ]
+    },
+    {
+      "id": "note_025",
+      "file": "data/notes/note_025.txt",
+      "spans": [
+        {
+          "start": 9,
+          "end": 24,
+          "type": "PERSON",
+          "text": "Anthony Ireland"
+        },
+        {
+          "start": 35,
+          "end": 45,
+          "type": "MEDICARE",
+          "text": "6901627211"
+        },
+        {
+          "start": 51,
+          "end": 67,
+          "type": "IHI",
+          "text": "8003604653755644"
+        },
+        {
+          "start": 77,
+          "end": 89,
+          "type": "PHONE",
+          "text": "0463 358 954"
+        },
+        {
+          "start": 95,
+          "end": 105,
+          "type": "DATE",
+          "text": "07/12/1992"
+        },
+        {
+          "start": 111,
+          "end": 117,
+          "type": "MRN",
+          "text": "781725"
+        },
+        {
+          "start": 127,
+          "end": 148,
+          "type": "LOCATION",
+          "text": "773 Koropongauru Road"
+        },
+        {
+          "start": 150,
+          "end": 163,
+          "type": "LOCATION",
+          "text": "Parkerborough"
+        },
+        {
+          "start": 164,
+          "end": 168,
+          "type": "POSTCODE",
+          "text": "1659"
+        }
+      ]
+    },
+    {
+      "id": "note_026",
+      "file": "data/notes/note_026.txt",
+      "spans": [
+        {
+          "start": 9,
+          "end": 26,
+          "type": "PERSON",
+          "text": "Elizabeth Bowater"
+        },
+        {
+          "start": 37,
+          "end": 47,
+          "type": "MEDICARE",
+          "text": "3271937403"
+        },
+        {
+          "start": 53,
+          "end": 69,
+          "type": "IHI",
+          "text": "8003602991241905"
+        },
+        {
+          "start": 79,
+          "end": 91,
+          "type": "PHONE",
+          "text": "0449 689 793"
+        },
+        {
+          "start": 97,
+          "end": 107,
+          "type": "DATE",
+          "text": "19/01/1965"
+        },
+        {
+          "start": 115,
+          "end": 135,
+          "type": "EMAIL",
+          "text": "jonestui@example.org"
+        }
+      ]
+    },
+    {
+      "id": "note_027",
+      "file": "data/notes/note_027.txt",
+      "spans": [
+        {
+          "start": 9,
+          "end": 26,
+          "type": "PERSON",
+          "text": "Timothy Johnstone"
+        },
+        {
+          "start": 37,
+          "end": 47,
+          "type": "MEDICARE",
+          "text": "6058651833"
+        },
+        {
+          "start": 53,
+          "end": 69,
+          "type": "IHI",
+          "text": "8003600671657267"
+        },
+        {
+          "start": 79,
+          "end": 94,
+          "type": "PHONE",
+          "text": "+61 493 376 730"
+        },
+        {
+          "start": 100,
+          "end": 110,
+          "type": "DATE",
+          "text": "18/06/1943"
+        },
+        {
+          "start": 118,
+          "end": 137,
+          "type": "EMAIL",
+          "text": "zmillar@example.org"
+        }
+      ]
+    },
+    {
+      "id": "note_028",
+      "file": "data/notes/note_028.txt",
+      "spans": [
+        {
+          "start": 9,
+          "end": 24,
+          "type": "PERSON",
+          "text": "Jackson Skinner"
+        },
+        {
+          "start": 35,
+          "end": 45,
+          "type": "MEDICARE",
+          "text": "3799650723"
+        },
+        {
+          "start": 51,
+          "end": 67,
+          "type": "IHI",
+          "text": "8003602735454947"
+        },
+        {
+          "start": 77,
+          "end": 92,
+          "type": "PHONE",
+          "text": "+61 434 187 347"
+        },
+        {
+          "start": 98,
+          "end": 108,
+          "type": "DATE",
+          "text": "05/03/1951"
+        },
+        {
+          "start": 116,
+          "end": 135,
+          "type": "EMAIL",
+          "text": "smorris@example.net"
+        }
+      ]
+    },
+    {
+      "id": "note_029",
+      "file": "data/notes/note_029.txt",
+      "spans": [
+        {
+          "start": 9,
+          "end": 26,
+          "type": "PERSON",
+          "text": "Michelle Hamilton"
+        },
+        {
+          "start": 32,
+          "end": 39,
+          "type": "NHI",
+          "text": "NYH4958"
+        },
+        {
+          "start": 49,
+          "end": 61,
+          "type": "PHONE",
+          "text": "021 584 9698"
+        },
+        {
+          "start": 67,
+          "end": 77,
+          "type": "DATE",
+          "text": "20/04/1945"
+        },
+        {
+          "start": 85,
+          "end": 106,
+          "type": "EMAIL",
+          "text": "tegandick@example.net"
+        },
+        {
+          "start": 116,
+          "end": 134,
+          "type": "LOCATION",
+          "text": "278 Amanda Terrace"
+        },
+        {
+          "start": 136,
+          "end": 147,
+          "type": "LOCATION",
+          "text": "Jenniferton"
+        },
+        {
+          "start": 148,
+          "end": 152,
+          "type": "POSTCODE",
+          "text": "8434"
+        }
+      ]
+    },
+    {
+      "id": "note_030",
+      "file": "data/notes/note_030.txt",
+      "spans": [
+        {
+          "start": 9,
+          "end": 28,
+          "type": "PERSON",
+          "text": "Charlotte Whittaker"
+        },
+        {
+          "start": 39,
+          "end": 49,
+          "type": "MEDICARE",
+          "text": "4182337485"
+        },
+        {
+          "start": 55,
+          "end": 71,
+          "type": "IHI",
+          "text": "8003608941343527"
+        },
+        {
+          "start": 81,
+          "end": 93,
+          "type": "PHONE",
+          "text": "0448 114 825"
+        },
+        {
+          "start": 99,
+          "end": 109,
+          "type": "DATE",
+          "text": "26/09/1936"
+        }
+      ]
+    }
+  ]
+}

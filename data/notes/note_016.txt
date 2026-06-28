@@ -1,0 +1,5 @@
+Patient: Lance Craig
+NHI: MUT2621
+Contact: 021 142 6050
+DOB: 09/11/1971
+Plan for routine follow-up. Reviewed in clinic today. Patient advised to call if symptoms worsen. No acute concerns. Continue current medications.

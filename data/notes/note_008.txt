@@ -1,0 +1,6 @@
+Patient: Nikora Spencer-Freeman
+Medicare: 4893252815
+IHI: 8003600957015438
+Contact: +61 482 180 187
+DOB: 21/11/1983
+Reviewed in clinic today. Plan for routine follow-up. Continue current medications. Patient advised to call if symptoms worsen. No acute concerns.

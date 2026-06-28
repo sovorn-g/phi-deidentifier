@@ -1,0 +1,6 @@
+Patient: Xavier Duncan
+Medicare: 2341316424
+IHI: 8003605255341923
+Contact: +61 430 573 488
+DOB: 19/07/1973
+No acute concerns. Patient advised to call if symptoms worsen. Plan for routine follow-up. Reviewed in clinic today. Continue current medications.

@@ -1,0 +1,6 @@
+Patient: Mackenzie O'Brien
+NHI: XHN1934
+Contact: 021 692 1651
+DOB: 19/12/1976
+Email: jlane@example.org
+Reviewed in clinic today. Plan for routine follow-up. Patient advised to call if symptoms worsen. No acute concerns. Continue current medications.

@@ -1,0 +1,7 @@
+Patient: Mason West
+Medicare: 4869232244
+IHI: 8003600256342160
+Contact: +61 438 304 936
+DOB: 20/03/1939
+Email: olivia43@example.org
+Patient advised to call if symptoms worsen. Plan for routine follow-up. Continue current medications. Reviewed in clinic today. No acute concerns.

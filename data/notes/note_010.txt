@@ -1,0 +1,7 @@
+Patient: Lauren Prentice
+Medicare: 3116566751
+IHI: 8003601065133386
+Contact: 0467 243 532
+DOB: 28/11/1963
+MRN: 947272
+No acute concerns. Continue current medications. Plan for routine follow-up. Reviewed in clinic today. Patient advised to call if symptoms worsen.

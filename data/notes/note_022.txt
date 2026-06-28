@@ -1,0 +1,7 @@
+Patient: Anthony Anderson
+Medicare: 6708317224
+IHI: 8003608895798684
+Contact: 0467 262 861
+DOB: 05/04/1956
+MRN: 915451
+Plan for routine follow-up. Reviewed in clinic today. Patient advised to call if symptoms worsen. Continue current medications. No acute concerns.

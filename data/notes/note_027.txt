@@ -1,0 +1,7 @@
+Patient: Timothy Johnstone
+Medicare: 6058651833
+IHI: 8003600671657267
+Contact: +61 493 376 730
+DOB: 18/06/1943
+Email: zmillar@example.org
+Patient advised to call if symptoms worsen. Plan for routine follow-up. Reviewed in clinic today. No acute concerns. Continue current medications.

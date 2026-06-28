@@ -1,0 +1,8 @@
+Patient: Peter Jensen
+NHI: WDA4332
+DOB: 30/06/1979
+Phone: 021 242 2679
+Address: 605 Bradley Avenue, Christopherbury, 7912
+MRN: 133326
+
+Presented with chest pain. Daughter Peter Lawson accompanied patient. Plan for follow-up in 2 weeks.

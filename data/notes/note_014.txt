@@ -1,0 +1,5 @@
+Patient: Wayne Willis
+NHI: MCH5429
+Contact: 021 548 9900
+DOB: 12/01/1951
+No acute concerns. Patient advised to call if symptoms worsen. Plan for routine follow-up. Continue current medications. Reviewed in clinic today.

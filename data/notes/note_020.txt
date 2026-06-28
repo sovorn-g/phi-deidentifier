@@ -1,0 +1,7 @@
+Patient: Paul Kennedy
+Medicare: 4951484653
+IHI: 8003606482366295
+Contact: +61 480 953 100
+DOB: 18/11/1982
+Email: raymond87@example.org
+Reviewed in clinic today. Patient advised to call if symptoms worsen. No acute concerns. Plan for routine follow-up. Continue current medications.

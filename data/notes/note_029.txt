@@ -1,0 +1,7 @@
+Patient: Michelle Hamilton
+NHI: NYH4958
+Contact: 021 584 9698
+DOB: 20/04/1945
+Email: tegandick@example.net
+Address: 278 Amanda Terrace, Jenniferton 8434
+No acute concerns. Plan for routine follow-up. Reviewed in clinic today. Patient advised to call if symptoms worsen. Continue current medications.

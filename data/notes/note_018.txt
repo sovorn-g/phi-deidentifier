@@ -1,0 +1,7 @@
+Patient: Stephen Gibb
+NHI: JCJ5865
+Contact: 021 795 9785
+DOB: 03/03/1937
+MRN: 373903
+Address: 40 Jackson Street, Wakakoro 5349
+Patient advised to call if symptoms worsen. Continue current medications. No acute concerns. Plan for routine follow-up. Reviewed in clinic today.

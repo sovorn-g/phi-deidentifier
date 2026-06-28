@@ -1,0 +1,6 @@
+Patient: Cheryl Lane
+NHI: SDN9343
+Contact: 021 145 8144
+DOB: 20/10/1977
+Email: sarahbarker@example.net
+Plan for routine follow-up. Reviewed in clinic today. Patient advised to call if symptoms worsen. Continue current medications. No acute concerns.

@@ -1,0 +1,9 @@
+Patient: Stella Price-McDonald
+Medicare: 5413953794
+IHI: 8003607242388496
+Contact: +61 456 324 241
+DOB: 30/11/1935
+Email: justineskinner@example.org
+MRN: 214975
+Address: 812 Kowhaitere Street, Fishermouth 3621
+Patient advised to call if symptoms worsen. Continue current medications. No acute concerns. Reviewed in clinic today. Plan for routine follow-up.

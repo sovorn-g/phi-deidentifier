@@ -1,0 +1,6 @@
+Patient: Charlotte Whittaker
+Medicare: 4182337485
+IHI: 8003608941343527
+Contact: 0448 114 825
+DOB: 26/09/1936
+Patient advised to call if symptoms worsen. Continue current medications. Reviewed in clinic today. Plan for routine follow-up. No acute concerns.
